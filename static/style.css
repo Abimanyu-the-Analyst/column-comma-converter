@@ -262,3 +262,30 @@ body.dark-mode .cards div {
   display: flex;
   align-items: center;
 }
+
+/* Dark mode - Settings text */
+body.dark-mode .controls label,
+body.dark-mode .controls .quote-control,
+body.dark-mode .controls .settings-title {
+  color: #f2f4f7;
+}
+
+/* Dark mode - checkbox labels */
+body.dark-mode .checks label {
+  color: #f2f4f7;
+}
+
+/* Dark mode - input/select labels */
+body.dark-mode .settings-grid > label {
+  color: #f2f4f7;
+}
+
+/* Dark mode - Quotes label */
+body.dark-mode .quote-control > span {
+  color: #f2f4f7;
+}
+
+/* Dark mode - checkbox */
+body.dark-mode .checks input[type="checkbox"] {
+  accent-color: #4da3ff;
+}
