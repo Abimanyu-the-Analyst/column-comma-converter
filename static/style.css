@@ -138,3 +138,127 @@ footer { text-align:center; padding:25px; color:#98a2b3; font-size:13px; }
   .settings-grid, .cards { grid-template-columns:1fr; }
   .checks { display:grid; grid-template-columns:1fr; }
 }
+
+/* =========================
+   Light / Dark Mode
+   ========================= */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 38px;
+  padding: 0 13px;
+  margin-right: 8px;
+  border: 1px solid #cfd6e2;
+  border-radius: 7px;
+  background: #fff;
+  color: #344054;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.theme-toggle:hover {
+  background: #f2f4f7;
+}
+
+/* Dark mode */
+
+body.dark-mode {
+  --ink: #e7eaf0;
+  --muted: #98a2b3;
+  --border: #343b49;
+  --panel: #1d222c;
+  --page: #11151c;
+  --accent: #4da3ff;
+  --accent2: #78baff;
+}
+
+body.dark-mode {
+  background: var(--page);
+  color: var(--ink);
+}
+
+body.dark-mode .topbar,
+body.dark-mode .panel,
+body.dark-mode .controls,
+body.dark-mode .cards div {
+  background: var(--panel);
+  border-color: var(--border);
+}
+
+body.dark-mode .topbar {
+  border-bottom-color: var(--border);
+}
+
+body.dark-mode .brand,
+body.dark-mode .panel h2,
+body.dark-mode .settings-title,
+body.dark-mode .help h2 {
+  color: var(--ink);
+}
+
+body.dark-mode .subtitle,
+body.dark-mode .counter,
+body.dark-mode footer {
+  color: var(--muted);
+}
+
+body.dark-mode textarea {
+  background: #181d25;
+  color: #e7eaf0;
+}
+
+body.dark-mode textarea::placeholder {
+  color: #667085;
+}
+
+body.dark-mode .line-numbers {
+  background: #151a21;
+  border-right-color: var(--border);
+  color: #667085;
+}
+
+body.dark-mode input,
+body.dark-mode select {
+  background: #181d25;
+  color: #e7eaf0;
+  border-color: #454d5c;
+}
+
+body.dark-mode .theme-toggle {
+  background: #252b36;
+  color: #e7eaf0;
+  border-color: #454d5c;
+}
+
+body.dark-mode .theme-toggle:hover {
+  background: #303744;
+}
+
+body.dark-mode .secondary {
+  background: #303744;
+  color: #e7eaf0;
+}
+
+body.dark-mode .segmented button {
+  background: #181d25;
+  color: #e7eaf0;
+  border-color: #454d5c;
+}
+
+body.dark-mode .segmented .active {
+  background: #173b5e;
+  color: #78baff;
+  border-color: #3279b8;
+}
+
+body.dark-mode .cards div {
+  color: #c5ccd8;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+}

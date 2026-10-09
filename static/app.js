@@ -169,3 +169,36 @@ document.getElementById("saveBtn").addEventListener("click", () => {
   document.getElementById(t === left ? "leftNumbers" : "rightNumbers").scrollTop = t.scrollTop;
 }));
 updateGutters();
+
+// =========================
+// Light / Dark Mode
+// =========================
+
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
+const themeText = document.getElementById("themeText");
+
+function applyTheme(theme) {
+  if (theme === "dark") {
+    document.body.classList.add("dark-mode");
+    themeIcon.textContent = "☀️";
+    themeText.textContent = "Light";
+  } else {
+    document.body.classList.remove("dark-mode");
+    themeIcon.textContent = "🌙";
+    themeText.textContent = "Dark";
+  }
+}
+
+// Load saved theme
+const savedTheme = localStorage.getItem("theme") || "light";
+applyTheme(savedTheme);
+
+// Toggle theme
+themeToggle.addEventListener("click", () => {
+  const isDark = document.body.classList.contains("dark-mode");
+  const newTheme = isDark ? "light" : "dark";
+
+  localStorage.setItem("theme", newTheme);
+  applyTheme(newTheme);
+});
