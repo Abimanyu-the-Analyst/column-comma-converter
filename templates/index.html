@@ -1,0 +1,118 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Column to Comma Separator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">↔</span> Column <strong>Comma</strong> Converter</div>
+  <div class="top-actions">
+    <button id="copyBtn" class="copy-btn">Copy output</button>
+    <span id="copied" class="copied">Copied!</span>
+  </div>
+</header>
+
+<main class="page">
+  <h1>Comma Separator – Convert Column to Comma Separated List</h1>
+  <p class="subtitle">Paste a column of values, convert it instantly, and copy the result.</p>
+
+  <section class="workspace">
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Enter / Get Column Data</h2>
+        <span id="leftCount" class="counter">0 lines</span>
+      </div>
+      <div class="editor">
+        <div id="leftNumbers" class="line-numbers">1</div>
+        <textarea id="left" spellcheck="false" placeholder="38035&#10;40143&#10;41051&#10;45079&#10;47165"></textarea>
+      </div>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Get / Enter Delimited List</h2>
+        <span id="rightCount" class="counter">0 items</span>
+      </div>
+      <div class="editor">
+        <div id="rightNumbers" class="line-numbers">1</div>
+        <textarea id="right" spellcheck="false" placeholder="38035,40143,41051,45079,47165"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section class="controls">
+    <div class="settings-title">Settings</div>
+
+    <div class="settings-grid">
+      <label>Delimiter
+        <select id="delimiter">
+          <option value=",">Comma (,)</option>
+          <option value=", ">Comma + space (, )</option>
+          <option value=";">Semicolon (;)</option>
+          <option value=" | ">Pipe ( | )</option>
+          <option value=" ">Space</option>
+          <option value="\\t">Tab</option>
+          <option value="\\n">Line break</option>
+        </select>
+      </label>
+
+      <label>Item Prefix
+        <input id="itemPrefix" value="">
+      </label>
+      <label>Item Suffix
+        <input id="itemSuffix" value="">
+      </label>
+      <label>List Prefix
+        <input id="listPrefix" value="">
+      </label>
+      <label>List Suffix
+        <input id="listSuffix" value="">
+      </label>
+
+      <div class="quote-control">
+        <span>Quotes</span>
+        <div class="segmented">
+          <button class="quote active" data-q="">None</button>
+          <button class="quote" data-q='"'>Double</button>
+          <button class="quote" data-q="'">Single</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="checks">
+      <label><input type="checkbox" id="lowercase"> Lowercase list</label>
+      <label><input type="checkbox" id="reverse"> Reverse list</label>
+      <label><input type="checkbox" id="removeLineBreaks" checked> Remove line breaks</label>
+      <label><input type="checkbox" id="removeParagraphBreaks" checked> Remove paragraph breaks</label>
+      <label><input type="checkbox" id="removeExtraSpaces"> Remove extra spaces</label>
+      <label><input type="checkbox" id="removeWhitespace"> Remove all whitespace</label>
+      <label><input type="checkbox" id="removeDuplicates"> Remove duplicates</label>
+    </div>
+
+    <div class="actions">
+      <button id="resetBtn" class="secondary">Reset</button>
+      <button id="saveBtn" class="primary">Save CSV ↓</button>
+    </div>
+  </section>
+
+  <section class="help">
+    <h2>How to use</h2>
+    <div class="cards">
+      <div><b>1.</b><span>Paste one value per line into the left box.</span></div>
+      <div><b>2.</b><span>Choose your delimiter and cleanup options.</span></div>
+      <div><b>3.</b><span>The comma-separated result appears instantly on the right.</span></div>
+      <div><b>4.</b><span>You can also paste a delimited list on the right to reverse-convert it.</span></div>
+    </div>
+  </section>
+</main>
+
+<footer>Column Comma Converter · Built with Python + Flask</footer>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
