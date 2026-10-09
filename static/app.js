@@ -76,7 +76,7 @@ function removeQuotesAndWrappers(v, o) {
   return x;
 }
 function clean(values, o) {
-  let out = values.map(v => v.trim());
+  let out = values.map(v => v);
   if (o.remove_line_breaks) out = out.map(v => v.replace(/[\r\n]/g, ""));
   if (o.remove_paragraph_breaks) out = out.map(v => v.replace(/\n{2,}/g, "\n"));
   if (o.remove_extra_spaces) out = out.map(v => v.replace(/\s+/g, " "));
