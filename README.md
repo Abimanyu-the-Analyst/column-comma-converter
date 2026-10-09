@@ -43,3 +43,9 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python app.py
 ```
+
+
+## Bug fixes
+
+- Added a copy fallback for HTTP LAN access such as `http://192.168.10.94:5000`.
+- Save CSV now exports the current right-side converted output instead of the left-side input.

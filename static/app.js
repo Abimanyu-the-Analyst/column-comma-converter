@@ -106,10 +106,37 @@ document.querySelectorAll(".quote").forEach(btn => {
 });
 
 document.getElementById("copyBtn").addEventListener("click", async () => {
-  await navigator.clipboard.writeText(right.value);
-  const msg = document.getElementById("copied");
-  msg.style.display = "inline";
-  setTimeout(() => msg.style.display = "none", 1200);
+  const text = right.value;
+
+  try {
+    // Modern Clipboard API works in HTTPS/localhost.
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      // Fallback for HTTP LAN addresses such as:
+      // http://192.168.10.94:5000
+      const helper = document.createElement("textarea");
+      helper.value = text;
+      helper.style.position = "fixed";
+      helper.style.left = "-9999px";
+      helper.style.top = "0";
+      document.body.appendChild(helper);
+      helper.focus();
+      helper.select();
+      document.execCommand("copy");
+      helper.remove();
+    }
+
+    const msg = document.getElementById("copied");
+    msg.textContent = "Copied!";
+    msg.style.display = "inline";
+    setTimeout(() => msg.style.display = "none", 1200);
+  } catch (err) {
+    const msg = document.getElementById("copied");
+    msg.textContent = "Copy failed - select and copy manually";
+    msg.style.display = "inline";
+    setTimeout(() => msg.style.display = "none", 2200);
+  }
 });
 
 document.getElementById("resetBtn").addEventListener("click", () => {
@@ -128,12 +155,12 @@ document.getElementById("resetBtn").addEventListener("click", () => {
 });
 
 document.getElementById("saveBtn").addEventListener("click", () => {
-  const values = clean(left.value.split(/\r?\n/), options());
-  const csv = values.map(v => `"${v.replaceAll('"','""')}"`).join("\n");
-  const blob = new Blob([csv], {type:"text/csv;charset=utf-8"});
+  // Save exactly what is currently displayed in the OUTPUT box.
+  const output = right.value;
+  const blob = new Blob([output], {type:"text/csv;charset=utf-8"});
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = "converted_list.csv";
+  a.download = "converted_output.csv";
   a.click();
   URL.revokeObjectURL(a.href);
 });
